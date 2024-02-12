@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0x939393),
+      backgroundColor: const Color(0x00939393),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
@@ -25,10 +25,10 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 150.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: const Color(0x939393).withOpacity(0.25),
+                            color: const Color(0x00939393).withOpacity(0.25),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                                color: const Color(0x939393).withOpacity(1),
+                                color: const Color(0x00939393).withOpacity(1),
                                 width: 3)),
                         width: constraints.maxWidth * 0.8,
                         height: constraints.maxHeight * 0.3,
@@ -37,10 +37,11 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: const Color(0X8B956D).withOpacity(0.5),
+                                  color:
+                                      const Color(0x008b956d).withOpacity(0.5),
                                   border: Border.all(
-                                      color:
-                                          const Color(0X8B956D).withOpacity(1),
+                                      color: const Color(0x008b956d)
+                                          .withOpacity(1),
                                       width: 2)),
                               width: constraints.maxWidth * 0.8 * 0.5,
                               height: constraints.maxHeight * 0.3 * 0.5,
@@ -67,10 +68,10 @@ class HomeScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: const Color(0X8B956D)
+                                      color: const Color(0x008b956d)
                                           .withOpacity(0.4),
                                       border: Border.all(
-                                          color: const Color(0X8B956D)
+                                          color: const Color(0x008b956d)
                                               .withOpacity(1),
                                           width: 2)),
                                   width: constraints.maxWidth * 0.8 * 0.3,
@@ -96,9 +97,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.add,
@@ -118,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(130, -80),
+                      offset: const Offset(130, -80),
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Icon(Icons.circle, size: 70, color: Colors.red),
@@ -127,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Transform.translate(
-                  offset: Offset(-50, -60),
+                  offset: const Offset(-50, -60),
                   child: Transform.rotate(
                     angle: -45 * 3.14 / 180,
                     child: const Padding(
@@ -155,7 +156,7 @@ class HomeScreen_play extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0x939393),
+      backgroundColor: const Color(0x00939393),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
@@ -172,10 +173,10 @@ class HomeScreen_play extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 150.0),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: const Color(0x939393).withOpacity(0.25),
+                            color: const Color(0x00939393).withOpacity(0.25),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                                color: const Color(0x939393).withOpacity(1),
+                                color: const Color(0x00939393).withOpacity(1),
                                 width: 3)),
                         width: constraints.maxWidth * 0.8,
                         height: constraints.maxHeight * 0.3,
@@ -184,10 +185,11 @@ class HomeScreen_play extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: const Color(0X8B956D).withOpacity(0.5),
+                                  color:
+                                      const Color(0x008b956d).withOpacity(0.5),
                                   border: Border.all(
-                                      color:
-                                          const Color(0X8B956D).withOpacity(1),
+                                      color: const Color(0x008b956d)
+                                          .withOpacity(1),
                                       width: 2)),
                               width: constraints.maxWidth * 0.8 * 0.5,
                               height: constraints.maxHeight * 0.3 * 0.5,
@@ -207,16 +209,17 @@ class HomeScreen_play extends StatelessWidget {
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => gamePage()));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const gamePage()),
+                                  );
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: const Color(0X8B956D)
+                                      color: const Color(0x008b956d)
                                           .withOpacity(0.4),
                                       border: Border.all(
-                                          color: const Color(0X8B956D)
+                                          color: const Color(0x008b956d)
                                               .withOpacity(1),
                                           width: 2)),
                                   width: constraints.maxWidth * 0.8 * 0.3,
@@ -242,9 +245,9 @@ class HomeScreen_play extends StatelessWidget {
                     ),
                   ],
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.add,
@@ -264,7 +267,7 @@ class HomeScreen_play extends StatelessWidget {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(130, -80),
+                      offset: const Offset(130, -80),
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Icon(Icons.circle, size: 70, color: Colors.red),
@@ -273,7 +276,7 @@ class HomeScreen_play extends StatelessWidget {
                   ],
                 ),
                 Transform.translate(
-                  offset: Offset(-50, -60),
+                  offset: const Offset(-50, -60),
                   child: Transform.rotate(
                     angle: -45 * 3.14 / 180,
                     child: const Padding(

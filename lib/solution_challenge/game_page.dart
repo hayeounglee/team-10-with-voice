@@ -18,9 +18,14 @@ class _gamePageState extends State<gamePage> {
   double _confidenceLevel = 0;
   bool _gameEnabled = true;
 
-  final int _player1Score = 0;
-  final int _player2Score = 0;
-  final int _playerTurn = 0;
+  int _player1Score = 0;
+  int _player2Score = 0;
+  int _playerTurn = 0;
+
+  // << Timer implementaion >>
+  static const maxSeconds = 5;
+  int timeLeft = maxSeconds;
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +62,7 @@ class _gamePageState extends State<gamePage> {
         // _wordsSpoken = "Wrong! '$_wordsSpoken' is already in the list.";
         _gameEnabled = false;
       } else {
+        _changeText();
         _autoPressButton(); // 자동 누르기 호출, 다른 플레이어로 넘어감
         _speechResultsList.add(_wordsSpoken);
         setState(() {
@@ -83,10 +89,6 @@ class _gamePageState extends State<gamePage> {
       _confidenceLevel = result.confidence;
     });
   }
-
-  // << Timer implementaion >>
-  static const maxSeconds = 5;
-  int timeLeft = maxSeconds;
 
   void _startCoutDonwn() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -129,7 +131,6 @@ class _gamePageState extends State<gamePage> {
     });
   }
 
-  final List<String> _displayTexts = ['Zebra', 'Lion', 'Fox', 'Panda'];
   IconData _iconData = Icons.info;
   bool _showIconAndBox = false;
 
@@ -165,8 +166,16 @@ class _gamePageState extends State<gamePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Text(
+                      _speechToText.isListening
+                          ? "듣는 중"
+                          : _speechEnabled
+                              ? "듣고 있지 않음xx. start 버튼 누르세요 "
+                              : "Speech not available",
+                      style: const TextStyle(fontSize: 20.0),
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 100),
+                      padding: const EdgeInsets.only(top: 10),
                       child: Container(
                         alignment: Alignment.center,
                         width: constraints.maxWidth * 0.8,
@@ -225,16 +234,13 @@ class _gamePageState extends State<gamePage> {
                                   ),
                                 ],
                               )
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: _displayTexts
-                                    .map((text) => Text(
-                                          text,
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: 'BlackHanSans'),
-                                        ))
-                                    .toList(),
+                            : ListView.builder(
+                                itemCount: _speechResultsList.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    title: Text(_speechResultsList[index]),
+                                  );
+                                },
                               ),
                       ),
                     ),
@@ -247,7 +253,7 @@ class _gamePageState extends State<gamePage> {
                         Text(
                           ' $_player1Score : $_player2Score',
                           style: const TextStyle(
-                              fontSize: 100,
+                              fontSize: 80,
                               color: Colors.grey,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'BlackHanSans'),
@@ -257,12 +263,19 @@ class _gamePageState extends State<gamePage> {
                     SizedBox(
                       height: constraints.maxHeight * 0.001,
                     ),
-                    const Text(
-                      '5',
-                      style: TextStyle(
+                    Text(
+                      timeLeft == 0 ? 'DONE' : timeLeft.toString(),
+                      style: const TextStyle(
                           fontSize: 150,
                           fontWeight: FontWeight.w800,
                           fontFamily: 'BlackHanSans'),
+                    ),
+                    Text(
+                      _gameEnabled ? _wordsSpoken : '게임종료',
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                     Container(),
                     Row(
@@ -281,7 +294,26 @@ class _gamePageState extends State<gamePage> {
                                         builder: (context) => tryAgainPage()));
                               },
                               child: const Icon(Icons.thumb_down)),
-                        )
+                        ),
+                        FloatingActionButton(
+                          onPressed: _speechToText.isListening
+                              ? _stopListening
+                              : _startListening,
+                          tooltip: 'Listen',
+                          backgroundColor: Colors.red,
+                          child: Icon(
+                            _speechToText.isNotListening
+                                ? Icons.mic_off
+                                : Icons.mic,
+                            color: Colors.white,
+                          ),
+                        ),
+                        FloatingActionButton(
+                          onPressed: _restartGame, // 게임 재시작 버튼
+                          tooltip: 'Restart Game',
+                          backgroundColor: Colors.blue,
+                          child: const Icon(Icons.refresh),
+                        ),
                       ],
                     ),
                     SizedBox(height: constraints.maxHeight * 0.001)
