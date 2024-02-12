@@ -15,7 +15,7 @@ class _GamePageState extends State<GamePage> {
   final List<String> _speechResultsList = [];
   bool _speechEnabled = false;
   String _wordsSpoken = "";
-  double _confidenceLevel = 0;
+  //double _confidenceLevel = 0;
   bool _gameEnabled = true;
 
   int _player1Score = 0;
@@ -48,7 +48,7 @@ class _GamePageState extends State<GamePage> {
     );
     _startCoutDonwn(); // 초시계 작동
     setState(() {
-      _confidenceLevel = 0;
+      //_confidenceLevel = 0;
     });
   }
 
@@ -89,7 +89,7 @@ class _GamePageState extends State<GamePage> {
   void _onSpeechResult(result) {
     setState(() {
       _wordsSpoken = "${result.recognizedWords}";
-      _confidenceLevel = result.confidence;
+      //_confidenceLevel = result.confidence;
     });
   }
 
@@ -130,7 +130,7 @@ class _GamePageState extends State<GamePage> {
       _player1Score = 0;
       _player2Score = 0;
       _playerTurn = 0;
-      _confidenceLevel = 0;
+      //_confidenceLevel = 0;
       _speechResultsList.clear();
       _clearWordsSpoken();
     });
