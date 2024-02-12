@@ -1,16 +1,135 @@
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'dart:async';
 import 'package:flutter_gdsc_sc/solution_challenge/try_again_page.dart';
 
 class gamePage extends StatefulWidget {
-  gamePage({super.key});
+  const gamePage({super.key});
 
   @override
   State<gamePage> createState() => _gamePageState();
 }
 
 class _gamePageState extends State<gamePage> {
-  List<String> _displayTexts = ['Zebra', 'Lion', 'Fox', 'Panda'];
+  final SpeechToText _speechToText = SpeechToText();
+  final List<String> _speechResultsList = [];
+  bool _speechEnabled = false;
+  String _wordsSpoken = "";
+  double _confidenceLevel = 0;
+  bool _gameEnabled = true;
+
+  final int _player1Score = 0;
+  final int _player2Score = 0;
+  final int _playerTurn = 0;
+  @override
+  void initState() {
+    super.initState();
+    initSpeech();
+  }
+
+  void initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    setState(() {
+      //_wordsSpoken = ""; // 추가
+    });
+  }
+
+  void _startListening() async {
+    _clearWordsSpoken(); // _wordsSpoken 초기화
+    await _speechToText.listen(
+      onResult: _onSpeechResult,
+      localeId: 'en_US', // 영어로만 인식되도록 설정
+    );
+    _startCoutDonwn(); // 초시계 작동
+    setState(() {
+      _confidenceLevel = 0;
+    });
+  }
+
+  void _stopListening() async {
+    await _speechToText.stop();
+    setState(() {
+      if (_wordsSpoken == "") {
+        // 시간안에 단어를 말하지 못할 떄 -> 게임 종료
+        _gameEnabled = false;
+      } else if (_speechResultsList.contains(_wordsSpoken)) {
+        // 리스트 안에 있는 단어를 말할 떄 -> 게임 종료
+        // _wordsSpoken = "Wrong! '$_wordsSpoken' is already in the list.";
+        _gameEnabled = false;
+      } else {
+        _autoPressButton(); // 자동 누르기 호출, 다른 플레이어로 넘어감
+        _speechResultsList.add(_wordsSpoken);
+        setState(() {
+          if (_playerTurn % 2 == 0) {
+            _player1Score++;
+          } else {
+            _player2Score++;
+          }
+          _playerTurn++;
+        });
+      }
+    });
+  }
+
+  void _clearWordsSpoken() {
+    setState(() {
+      _wordsSpoken = "";
+    });
+  }
+
+  void _onSpeechResult(result) {
+    setState(() {
+      _wordsSpoken = "${result.recognizedWords}";
+      _confidenceLevel = result.confidence;
+    });
+  }
+
+  // << Timer implementaion >>
+  static const maxSeconds = 5;
+  int timeLeft = maxSeconds;
+
+  void _startCoutDonwn() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        setState(() {
+          timeLeft--;
+        });
+      } else {
+        resetTimer();
+        timer.cancel();
+      }
+    });
+  }
+
+  void resetTimer() {
+    setState(() {
+      _stopListening();
+      timeLeft = maxSeconds;
+    });
+  }
+
+  void _autoPressButton() {
+    //  1초 후에 자동으로 Button을 누르도록 설정
+    Future.delayed(const Duration(seconds: 1), () {
+      if (_gameEnabled) {
+        _startListening();
+      }
+    });
+  }
+
+  void _restartGame() {
+    setState(() {
+      _gameEnabled = true;
+      _player1Score = 0;
+      _player2Score = 0;
+      _playerTurn = 0;
+      _confidenceLevel = 0;
+      _speechResultsList.clear();
+      _clearWordsSpoken();
+    });
+  }
+
+  final List<String> _displayTexts = ['Zebra', 'Lion', 'Fox', 'Panda'];
   IconData _iconData = Icons.info;
   bool _showIconAndBox = false;
 
@@ -18,7 +137,7 @@ class _gamePageState extends State<gamePage> {
     setState(() {
       _showIconAndBox = true;
       _iconData = Icons.sentiment_satisfied_alt;
-      Timer(Duration(seconds: 2), () {
+      Timer(const Duration(seconds: 2), () {
         setState(() {
           _showIconAndBox = false;
           _iconData = Icons.info;
@@ -53,10 +172,10 @@ class _gamePageState extends State<gamePage> {
                         width: constraints.maxWidth * 0.8,
                         height: constraints.maxHeight * 0.3,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(0, 193, 177, 177)
+                            color: const Color.fromARGB(0, 193, 177, 177)
                                 .withOpacity(0.4),
                             border: Border.all(
-                                color: Color(0x939393).withOpacity(1)),
+                                color: const Color(0x00939393).withOpacity(1)),
                             borderRadius: BorderRadius.circular(15)),
                         child: _showIconAndBox
                             ? Column(
@@ -85,11 +204,12 @@ class _gamePageState extends State<gamePage> {
                                     width: constraints.maxWidth * 0.8 * 0.3,
                                     height: constraints.maxHeight * 0.3 * 0.25,
                                     decoration: BoxDecoration(
-                                        color: Color(0X8B956D).withOpacity(0.4),
+                                        color: const Color(0x008b956d)
+                                            .withOpacity(0.4),
                                         border: Border.all(
-                                            color: Color(0x8B956D)
+                                            color: const Color(0x008b956d)
                                                 .withOpacity(1))),
-                                    child: Column(
+                                    child: const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -110,7 +230,7 @@ class _gamePageState extends State<gamePage> {
                                 children: _displayTexts
                                     .map((text) => Text(
                                           text,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 18,
                                               fontFamily: 'BlackHanSans'),
                                         ))
@@ -124,29 +244,20 @@ class _gamePageState extends State<gamePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('5',
-                            style: TextStyle(
-                                fontSize: 100,
-                                color: Colors.grey,
-                                fontFamily: 'BlackHanSans')),
-                        Text(':',
-                            style: TextStyle(
-                                fontSize: 100,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'BlackHanSans')),
-                        Text('4',
-                            style: TextStyle(
-                                fontSize: 100,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'BlackHanSans'))
+                        Text(
+                          ' $_player1Score : $_player2Score',
+                          style: const TextStyle(
+                              fontSize: 100,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'BlackHanSans'),
+                        ),
                       ],
                     ),
                     SizedBox(
                       height: constraints.maxHeight * 0.001,
                     ),
-                    Text(
+                    const Text(
                       '5',
                       style: TextStyle(
                           fontSize: 150,
@@ -158,7 +269,8 @@ class _gamePageState extends State<gamePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
-                            onPressed: _changeText, icon: Icon(Icons.thumb_up)),
+                            onPressed: _changeText,
+                            icon: const Icon(Icons.thumb_up)),
                         Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: GestureDetector(
@@ -168,7 +280,7 @@ class _gamePageState extends State<gamePage> {
                                     MaterialPageRoute(
                                         builder: (context) => tryAgainPage()));
                               },
-                              child: Icon(Icons.thumb_down)),
+                              child: const Icon(Icons.thumb_down)),
                         )
                       ],
                     ),
