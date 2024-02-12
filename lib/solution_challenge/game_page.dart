@@ -155,7 +155,7 @@ class _gamePageState extends State<GamePage> {
   void _navigateToTryAgainPage() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => tryAgainPage()),
+      MaterialPageRoute(builder: (context) => const TryAgainPage()),
     );
   }
 
@@ -303,7 +303,8 @@ class _gamePageState extends State<GamePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => tryAgainPage()));
+                                        builder: (context) =>
+                                            const TryAgainPage()));
                               },
                               child: const Icon(Icons.thumb_down)),
                         ),

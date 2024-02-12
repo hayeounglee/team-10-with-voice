@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/game_page.dart';
 
-class tryAgainPage extends StatelessWidget {
-  const tryAgainPage({super.key});
+class TryAgainPage extends StatelessWidget {
+  const TryAgainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
