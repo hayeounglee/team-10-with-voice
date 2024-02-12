@@ -30,6 +30,7 @@ class _gamePageState extends State<gamePage> {
   void initState() {
     super.initState();
     initSpeech();
+    _autoPressButton();
   }
 
   void initSpeech() async {
@@ -57,10 +58,12 @@ class _gamePageState extends State<gamePage> {
       if (_wordsSpoken == "") {
         // 시간안에 단어를 말하지 못할 떄 -> 게임 종료
         _gameEnabled = false;
+        _navigateToTryAgainPage();
       } else if (_speechResultsList.contains(_wordsSpoken)) {
         // 리스트 안에 있는 단어를 말할 떄 -> 게임 종료
         // _wordsSpoken = "Wrong! '$_wordsSpoken' is already in the list.";
         _gameEnabled = false;
+        _navigateToTryAgainPage();
       } else {
         _changeText();
         _autoPressButton(); // 자동 누르기 호출, 다른 플레이어로 넘어감
@@ -91,15 +94,17 @@ class _gamePageState extends State<gamePage> {
   }
 
   void _startCoutDonwn() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (timeLeft > 0) {
-        setState(() {
-          timeLeft--;
-        });
-      } else {
-        resetTimer();
-        timer.cancel();
-      }
+    Future.delayed(const Duration(seconds: 1), () {
+      Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (timeLeft > 0) {
+          setState(() {
+            timeLeft--;
+          });
+        } else {
+          resetTimer();
+          timer.cancel();
+        }
+      });
     });
   }
 
@@ -147,6 +152,13 @@ class _gamePageState extends State<gamePage> {
     });
   }
 
+  void _navigateToTryAgainPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => tryAgainPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,8 +175,8 @@ class _gamePageState extends State<gamePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       _speechToText.isListening
@@ -188,8 +200,8 @@ class _gamePageState extends State<gamePage> {
                             borderRadius: BorderRadius.circular(15)),
                         child: _showIconAndBox
                             ? Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // mainAxisAlignment: MainAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 20),
