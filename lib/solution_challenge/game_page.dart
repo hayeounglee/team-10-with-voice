@@ -3,14 +3,14 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'dart:async';
 import 'package:flutter_gdsc_sc/solution_challenge/try_again_page.dart';
 
-class gamePage extends StatefulWidget {
-  const gamePage({super.key});
+class GamePage extends StatefulWidget {
+  const GamePage({super.key});
 
   @override
-  State<gamePage> createState() => _gamePageState();
+  State<GamePage> createState() => _gamePageState();
 }
 
-class _gamePageState extends State<gamePage> {
+class _gamePageState extends State<GamePage> {
   final SpeechToText _speechToText = SpeechToText();
   final List<String> _speechResultsList = [];
   bool _speechEnabled = false;

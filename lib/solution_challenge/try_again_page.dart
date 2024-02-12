@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/game_page.dart';
 
 class tryAgainPage extends StatelessWidget {
-  tryAgainPage({super.key});
+  const tryAgainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,10 @@ class tryAgainPage extends StatelessWidget {
                     width: 400,
                     height: 200,
                     decoration: BoxDecoration(
-                        color:
-                            Color.fromARGB(0, 193, 177, 177).withOpacity(0.4),
-                        border:
-                            Border.all(color: Color(0x939393).withOpacity(1)),
+                        color: const Color.fromARGB(0, 193, 177, 177)
+                            .withOpacity(0.4),
+                        border: Border.all(
+                            color: const Color(0x00939393).withOpacity(1)),
                         borderRadius: BorderRadius.circular(15)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class tryAgainPage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(200)),
-                          child: Icon(
+                          child: const Icon(
                             Icons.sentiment_very_dissatisfied,
                             size: 70,
                             color: Colors.white,
@@ -50,10 +50,11 @@ class tryAgainPage extends StatelessWidget {
                             width: 100,
                             height: 50,
                             decoration: BoxDecoration(
-                                color: Color(0X8B956D).withOpacity(0.4),
+                                color: const Color(0x008b956d).withOpacity(0.4),
                                 border: Border.all(
-                                    color: Color(0x8B956D).withOpacity(1))),
-                            child: Column(
+                                    color: const Color(0x008b956d)
+                                        .withOpacity(1))),
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -79,7 +80,7 @@ class tryAgainPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: Colors.red,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(blurRadius: 7, color: Colors.grey)
                         ]),
                     child: Column(
@@ -90,9 +91,9 @@ class tryAgainPage extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => gamePage()));
+                                    builder: (context) => const GamePage()));
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.refresh,
                             color: Colors.white,
                             size: 100,
