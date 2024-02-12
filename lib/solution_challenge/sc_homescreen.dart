@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
             width: constraints.maxWidth,
             height: constraints.maxHeight,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 6)),
+                border: Border.all(color: Colors.black, width: 8)),
             child: Column(
               children: [
                 Row(

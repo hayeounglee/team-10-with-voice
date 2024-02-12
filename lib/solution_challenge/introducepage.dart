@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/sc_homescreen.dart';
 
 class introducePage1 extends StatelessWidget {
-  introducePage1({super.key});
-  final textStyle = TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
+  const introducePage1({super.key});
+  final textStyle = const TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class introducePage1 extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 6)),
+                border: Border.all(color: Colors.black, width: 8)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,10 +63,10 @@ class introducePage1 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => introducePage2()),
+                            builder: (context) => const introducePage2()),
                       );
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.play_arrow,
                       size: 50,
                     ),
@@ -82,8 +82,8 @@ class introducePage1 extends StatelessWidget {
 }
 
 class introducePage2 extends StatelessWidget {
-  introducePage2({super.key});
-  final textStyle = TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
+  const introducePage2({super.key});
+  final textStyle = const TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class introducePage2 extends StatelessWidget {
             Stack(
               children: [
                 Image.asset('sc_image/introduce_2.png'),
-                Icon(
+                const Icon(
                   Icons.search,
                   size: 300,
                   color: Colors.white,
@@ -135,10 +135,11 @@ class introducePage2 extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => introducePage3()),
+                    MaterialPageRoute(
+                        builder: (context) => const introducePage3()),
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.play_arrow,
                   size: 50,
                 ),
@@ -152,8 +153,8 @@ class introducePage2 extends StatelessWidget {
 }
 
 class introducePage3 extends StatelessWidget {
-  introducePage3({super.key});
-  final textStyle = TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
+  const introducePage3({super.key});
+  final textStyle = const TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +170,8 @@ class introducePage3 extends StatelessWidget {
             Stack(
               children: [
                 Image.asset('sc_image/introduce_3.png'),
-                Icon(Icons.health_and_safety, color: Colors.white, size: 370)
+                const Icon(Icons.health_and_safety,
+                    color: Colors.white, size: 370)
               ],
             ),
             Column(
@@ -200,10 +202,11 @@ class introducePage3 extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => introducePage4()),
+                    MaterialPageRoute(
+                        builder: (context) => const introducePage4()),
                   );
                 },
-                icon: Icon(Icons.play_arrow, size: 50),
+                icon: const Icon(Icons.play_arrow, size: 50),
               ),
             )
           ],
@@ -214,8 +217,8 @@ class introducePage3 extends StatelessWidget {
 }
 
 class introducePage4 extends StatelessWidget {
-  introducePage4({super.key});
-  final textStyle = TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
+  const introducePage4({super.key});
+  final textStyle = const TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +234,7 @@ class introducePage4 extends StatelessWidget {
             Stack(
               children: [
                 Image.asset('sc_image/introduce_4.png'),
-                Positioned(
+                const Positioned(
                   left: 80,
                   top: 100,
                   child: Icon(
@@ -257,10 +260,11 @@ class introducePage4 extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen_play()),
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen_play()),
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.play_arrow,
                   size: 50,
                 ),

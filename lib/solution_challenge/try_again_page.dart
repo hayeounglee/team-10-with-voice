@@ -10,7 +10,7 @@ class TryAgainPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Container(
         decoration:
-            BoxDecoration(border: Border.all(color: Colors.black, width: 6)),
+            BoxDecoration(border: Border.all(color: Colors.black, width: 8)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -169,7 +169,7 @@ class _GamePageState extends State<GamePage> {
             width: constraints.maxWidth,
             height: constraints.maxHeight,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 6)),
+                border: Border.all(color: Colors.black, width: 8)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
