@@ -7,10 +7,10 @@ class GamePage extends StatefulWidget {
   const GamePage({super.key});
 
   @override
-  State<GamePage> createState() => _gamePageState();
+  State<GamePage> createState() => _GamePageState();
 }
 
-class _gamePageState extends State<GamePage> {
+class _GamePageState extends State<GamePage> {
   final SpeechToText _speechToText = SpeechToText();
   final List<String> _speechResultsList = [];
   bool _speechEnabled = false;
