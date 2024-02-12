@@ -3,7 +3,11 @@ import 'package:flutter_gdsc_sc/solution_challenge/sc_homescreen.dart';
 
 class introducePage1 extends StatelessWidget {
   const introducePage1({super.key});
-  final textStyle = const TextStyle(fontFamily: 'GamjaFlower', fontSize: 35);
+  final textStyle = const TextStyle(
+    fontFamily: 'GamjaFlower',
+    fontSize: 35,
+    color: Colors.black,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -135,19 +139,34 @@ class introducePage2 extends StatelessWidget {
                       children: const [
                         TextSpan(
                           text: 'If detected ',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
                         ),
                         TextSpan(
                           text: 'early',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                         TextSpan(
                           text: ' and ',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
                         ),
                         TextSpan(
                           text: '\nmanaged appropriately,',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
                         ),
                         TextSpan(
                           text: '\nit can be helpful \nfor prevention',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
                         ),
                       ],
                     ),
@@ -199,14 +218,15 @@ class introducePage3 extends StatelessWidget {
                   children: [
                     Image.asset(
                       'sc_image/introduce_3.png',
-                      width: constraints.maxHeight * 0.5,
-                      height: constraints.maxWidth * 0.5,
+                      width: constraints.maxHeight * 0.55,
+                      height: constraints.maxWidth * 0.55,
                     ),
-                    const Positioned(
+                    Positioned(
                       left: 70,
                       top: 35,
                       child: Icon(Icons.health_and_safety,
-                          color: Colors.white, size: 200),
+                          color: Colors.white,
+                          size: constraints.maxHeight * 0.3),
                     )
                   ],
                 ),
@@ -221,20 +241,35 @@ class introducePage3 extends StatelessWidget {
                           TextSpan(
                             text:
                                 'So we created a game\nthat can help improve both ',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
                           ),
                           TextSpan(
                             text: '\nphysical fitness',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                           TextSpan(
                             text: ' and ',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
                           ),
                           TextSpan(
                             text: 'memory',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                           TextSpan(
                             text: '\nat the same time!',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -284,11 +319,11 @@ class introducePage4 extends StatelessWidget {
                 children: [
                   Image.asset(
                     'sc_image/introduce_4.png',
-                    width: constraints.maxHeight * 0.5,
-                    height: constraints.maxWidth * 0.5,
+                    width: constraints.maxHeight * 0.55,
+                    height: constraints.maxWidth * 0.55,
                   ),
                   Positioned(
-                    left: 97,
+                    left: 130,
                     top: 40,
                     child: Icon(
                       Icons.settings_accessibility,

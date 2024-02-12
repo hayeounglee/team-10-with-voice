@@ -58,12 +58,12 @@ class _GamePageState extends State<GamePage> {
       if (_wordsSpoken == "") {
         // 시간안에 단어를 말하지 못할 떄 -> 게임 종료
         _gameEnabled = false;
-        // _navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
+        _navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
       } else if (_speechResultsList.contains(_wordsSpoken)) {
         // 리스트 안에 있는 단어를 말할 떄 -> 게임 종료
         // _wordsSpoken = "Wrong! '$_wordsSpoken' is already in the list.";
         _gameEnabled = false;
-        //_navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
+        _navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
       } else {
         _changeText();
         _autoPressButton(); // 자동 누르기 호출, 다른 플레이어로 넘어감

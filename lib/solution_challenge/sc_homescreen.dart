@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/introducepage.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/game_page.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,13 +50,11 @@ class HomeScreen extends StatelessWidget {
                               child: const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Animate(
-                                      effects: [FadeEffect(), ScaleEffect()],
-                                      child: Text('XXX Game',
-                                          style: TextStyle(
-                                              fontSize: 40,
-                                              fontWeight: FontWeight.w900,
-                                              fontFamily: 'Gugi')))
+                                  Text('XXX Game',
+                                      style: TextStyle(
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w900,
+                                          fontFamily: 'Gugi')),
                                 ],
                               ),
                             ),
@@ -79,16 +78,28 @@ class HomeScreen extends StatelessWidget {
                                           width: 2)),
                                   width: constraints.maxWidth * 0.8 * 0.5,
                                   height: constraints.maxHeight * 0.3 * 0.3,
-                                  child: const Column(
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        '>Learn',
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.w900,
-                                            fontFamily: 'Gugi'),
-                                      )
+                                      SizedBox(
+                                        width: 150.0,
+                                        child: DefaultTextStyle(
+                                          style: const TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w900,
+                                              fontFamily: 'Gugi'),
+                                          child: AnimatedTextKit(
+                                            animatedTexts: [
+                                              TypewriterAnimatedText(
+                                                '>Learn',
+                                                speed: const Duration(
+                                                    milliseconds: 200),
+                                              ),
+                                            ],
+                                            totalRepeatCount: 3,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
