@@ -211,7 +211,7 @@ class HomeScreen_play extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const gamePage()),
+                                        builder: (context) => const GamePage()),
                                   );
                                 },
                                 child: Container(

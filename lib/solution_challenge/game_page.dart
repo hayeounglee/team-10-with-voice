@@ -58,12 +58,12 @@ class _GamePageState extends State<GamePage> {
       if (_wordsSpoken == "") {
         // 시간안에 단어를 말하지 못할 떄 -> 게임 종료
         _gameEnabled = false;
-        _navigateToTryAgainPage();
+        // _navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
       } else if (_speechResultsList.contains(_wordsSpoken)) {
         // 리스트 안에 있는 단어를 말할 떄 -> 게임 종료
         // _wordsSpoken = "Wrong! '$_wordsSpoken' is already in the list.";
         _gameEnabled = false;
-        _navigateToTryAgainPage();
+        //_navigateToTryAgainPage(); // Try Again 화면으로 넘어가고 싶지 않을 시 -> 이 부분 주석처리하기
       } else {
         _changeText();
         _autoPressButton(); // 자동 누르기 호출, 다른 플레이어로 넘어감
@@ -180,11 +180,11 @@ class _GamePageState extends State<GamePage> {
                   children: [
                     Text(
                       _speechToText.isListening
-                          ? "듣는 중"
+                          ? "Lesining"
                           : _speechEnabled
-                              ? "듣고 있지 않음xx. start 버튼 누르세요 "
+                              ? "Not Lestening"
                               : "Speech not available",
-                      style: const TextStyle(fontSize: 20.0),
+                      style: const TextStyle(fontSize: 15),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
@@ -276,20 +276,21 @@ class _GamePageState extends State<GamePage> {
                       height: constraints.maxHeight * 0.001,
                     ),
                     Text(
-                      timeLeft == 0 ? 'DONE' : timeLeft.toString(),
+                      // timeLeft == 0 ? 'DONE' : timeLeft.toString(),
+                      timeLeft == 0 ? '' : timeLeft.toString(),
                       style: const TextStyle(
                           fontSize: 150,
                           fontWeight: FontWeight.w800,
                           fontFamily: 'BlackHanSans'),
                     ),
-                    Text(
-                      _gameEnabled ? _wordsSpoken : '게임종료',
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    Container(),
+                    // Text(
+                    //   _gameEnabled ? _wordsSpoken : '게임종료',
+                    //   style: const TextStyle(
+                    //     fontSize: 15,
+                    //     fontWeight: FontWeight.w300,
+                    //   ),
+                    // ),
+                    //Container(),
                     //Row(
                     //mainAxisAlignment: MainAxisAlignment.center,
                     //children: [
