@@ -40,19 +40,30 @@ class introducePage1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Alzheimer is a',
-                        style: textStyle,
+                      RichText(
+                        text: TextSpan(
+                          style: textStyle,
+                          children: const [
+                            TextSpan(
+                              text: 'Alzheimer is a\n',
+                            ),
+                            TextSpan(
+                              text: 'high-risk disease',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text: ',\nand it can occur even\nat a ',
+                            ),
+                            TextSpan(
+                              text: 'young age',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text: '\n',
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        'high-risk disease,',
-                        style: textStyle,
-                      ),
-                      Text(
-                        'and it can occur even',
-                        style: textStyle,
-                      ),
-                      Text('at a young age', style: textStyle)
                     ],
                   ),
                 ),
@@ -111,22 +122,29 @@ class introducePage2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'If detected early and ',
-                  style: textStyle,
+                RichText(
+                  text: TextSpan(
+                    style: textStyle,
+                    children: const [
+                      TextSpan(
+                        text: 'If detected ',
+                      ),
+                      TextSpan(
+                        text: 'early',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: ' and ',
+                      ),
+                      TextSpan(
+                        text: 'managed appropriately,',
+                      ),
+                      TextSpan(
+                        text: ' it can be helpful for prevention',
+                      ),
+                    ],
+                  ),
                 ),
-                Text(
-                  'managed appropriately,',
-                  style: textStyle,
-                ),
-                Text(
-                  'it can be helpful',
-                  style: textStyle,
-                ),
-                Text(
-                  'for prevention',
-                  style: textStyle,
-                )
               ],
             ),
             Align(
@@ -178,22 +196,31 @@ class introducePage3 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'So we created a game',
-                  style: textStyle,
+                RichText(
+                  text: TextSpan(
+                    style: textStyle,
+                    children: const [
+                      TextSpan(
+                        text:
+                            'So we created a game\nthat can help improve\nboth ',
+                      ),
+                      TextSpan(
+                        text: 'physical fitness',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: ' and ',
+                      ),
+                      TextSpan(
+                        text: 'memory',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: '\nat the same time!',
+                      ),
+                    ],
+                  ),
                 ),
-                Text(
-                  'that can help improve ',
-                  style: textStyle,
-                ),
-                Text(
-                  'both physical fitness and memory',
-                  style: textStyle,
-                ),
-                Text(
-                  'at the same time!',
-                  style: textStyle,
-                )
               ],
             ),
             Align(

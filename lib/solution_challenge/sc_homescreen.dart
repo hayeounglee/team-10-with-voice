@@ -37,13 +37,13 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color:
-                                      const Color(0x008b956d).withOpacity(0.5),
+                                  color: const Color.fromARGB(0, 255, 255, 255)
+                                      .withOpacity(0.5),
                                   border: Border.all(
                                       color: const Color(0x008b956d)
                                           .withOpacity(1),
                                       width: 2)),
-                              width: constraints.maxWidth * 0.8 * 0.6,
+                              width: constraints.maxWidth * 0.8 * 0.7,
                               height: constraints.maxHeight * 0.3 * 0.5,
                               child: const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              introducePage1()));
+                                              const introducePage1()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                                           color: const Color(0x008b956d)
                                               .withOpacity(1),
                                           width: 2)),
-                                  width: constraints.maxWidth * 0.8 * 0.4,
+                                  width: constraints.maxWidth * 0.8 * 0.5,
                                   height: constraints.maxHeight * 0.3 * 0.3,
                                   child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +191,7 @@ class HomeScreen_play extends StatelessWidget {
                                       color: const Color(0x008b956d)
                                           .withOpacity(1),
                                       width: 2)),
-                              width: constraints.maxWidth * 0.8 * 0.6,
+                              width: constraints.maxWidth * 0.8 * 0.7,
                               height: constraints.maxHeight * 0.3 * 0.5,
                               child: const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -222,7 +222,7 @@ class HomeScreen_play extends StatelessWidget {
                                           color: const Color(0x008b956d)
                                               .withOpacity(1),
                                           width: 2)),
-                                  width: constraints.maxWidth * 0.8 * 0.4,
+                                  width: constraints.maxWidth * 0.8 * 0.5,
                                   height: constraints.maxHeight * 0.3 * 0.3,
                                   child: const Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
