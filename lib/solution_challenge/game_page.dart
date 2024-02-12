@@ -250,7 +250,10 @@ class _GamePageState extends State<GamePage> {
                                 itemCount: _speechResultsList.length,
                                 itemBuilder: (context, index) {
                                   return ListTile(
-                                    title: Text(_speechResultsList[index]),
+                                    title: Text(_speechResultsList[index],
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontFamily: 'BlackHanSans')),
                                   );
                                 },
                               ),
