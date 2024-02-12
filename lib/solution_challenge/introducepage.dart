@@ -35,37 +35,35 @@ class introducePage1 extends StatelessWidget {
                     )
                   ],
                 ),
-                Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          style: textStyle,
-                          children: const [
-                            TextSpan(
-                              text: 'Alzheimer is a\n',
-                            ),
-                            TextSpan(
-                              text: 'high-risk disease',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(
-                              text: ',\nand it can occur even\nat a ',
-                            ),
-                            TextSpan(
-                              text: 'young age',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(
-                              text: '\n',
-                            ),
-                          ],
-                        ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: textStyle,
+                        children: const [
+                          TextSpan(
+                            text: 'Alzheimer is a\n',
+                          ),
+                          TextSpan(
+                            text: 'high-risk disease',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: ',\nand it can occur even\nat a ',
+                          ),
+                          TextSpan(
+                            text: 'young age',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: '\n',
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -100,72 +98,82 @@ class introducePage2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 6),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Stack(
-              children: [
-                Image.asset('sc_image/introduce_2.png'),
-                const Icon(
-                  Icons.search,
-                  size: 300,
-                  color: Colors.white,
-                )
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    style: textStyle,
-                    children: const [
-                      TextSpan(
-                        text: 'If detected ',
-                      ),
-                      TextSpan(
-                        text: 'early',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: ' and ',
-                      ),
-                      TextSpan(
-                        text: 'managed appropriately,',
-                      ),
-                      TextSpan(
-                        text: ' it can be helpful for prevention',
-                      ),
-                    ],
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 8),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    'sc_image/introduce_2.png',
+                    width: constraints.maxHeight * 0.5,
+                    height: constraints.maxWidth * 0.5,
+                  ),
+                  Positioned(
+                    left: 60,
+                    child: Icon(
+                      Icons.search,
+                      size: constraints.maxHeight * 0.3,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      style: textStyle,
+                      children: const [
+                        TextSpan(
+                          text: 'If detected ',
+                        ),
+                        TextSpan(
+                          text: 'early',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: ' and ',
+                        ),
+                        TextSpan(
+                          text: '\nmanaged appropriately,',
+                        ),
+                        TextSpan(
+                          text: '\nit can be helpful \nfor prevention',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const introducePage3()),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.play_arrow,
+                    size: 50,
                   ),
                 ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const introducePage3()),
-                  );
-                },
-                icon: const Icon(
-                  Icons.play_arrow,
-                  size: 50,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }
@@ -178,66 +186,78 @@ class introducePage3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 6),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Stack(
-              children: [
-                Image.asset('sc_image/introduce_3.png'),
-                const Icon(Icons.health_and_safety,
-                    color: Colors.white, size: 370)
-              ],
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 6),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                RichText(
-                  text: TextSpan(
-                    style: textStyle,
-                    children: const [
-                      TextSpan(
-                        text:
-                            'So we created a game\nthat can help improve\nboth ',
-                      ),
-                      TextSpan(
-                        text: 'physical fitness',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: ' and ',
-                      ),
-                      TextSpan(
-                        text: 'memory',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: '\nat the same time!',
-                      ),
-                    ],
-                  ),
+                Stack(
+                  children: [
+                    Image.asset(
+                      'sc_image/introduce_3.png',
+                      width: constraints.maxHeight * 0.5,
+                      height: constraints.maxWidth * 0.5,
+                    ),
+                    const Positioned(
+                      left: 70,
+                      top: 35,
+                      child: Icon(Icons.health_and_safety,
+                          color: Colors.white, size: 200),
+                    )
+                  ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: textStyle,
+                        children: const [
+                          TextSpan(
+                            text:
+                                'So we created a game\nthat can help improve both ',
+                          ),
+                          TextSpan(
+                            text: '\nphysical fitness',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: ' and ',
+                          ),
+                          TextSpan(
+                            text: 'memory',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: '\nat the same time!',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const introducePage4()),
+                      );
+                    },
+                    icon: const Icon(Icons.play_arrow, size: 50),
+                  ),
+                )
               ],
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const introducePage4()),
-                  );
-                },
-                icon: const Icon(Icons.play_arrow, size: 50),
-              ),
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -251,55 +271,62 @@ class introducePage4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 6),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Stack(
-              children: [
-                Image.asset('sc_image/introduce_4.png'),
-                const Positioned(
-                  left: 80,
-                  top: 100,
-                  child: Icon(
-                    Icons.settings_accessibility,
-                    color: Colors.white,
-                    size: 200,
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 6),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    'sc_image/introduce_4.png',
+                    width: constraints.maxHeight * 0.5,
+                    height: constraints.maxWidth * 0.5,
                   ),
-                )
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Okay! lets start game!!',
-                  style: textStyle,
-                ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen_play()),
-                  );
-                },
-                icon: const Icon(
-                  Icons.play_arrow,
-                  size: 50,
-                ),
+                  Positioned(
+                    left: 97,
+                    top: 40,
+                    child: Icon(
+                      Icons.settings_accessibility,
+                      size: constraints.maxHeight * 0.2,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Okay! Lets start game!!',
+                    style: textStyle,
+                  ),
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen_play()),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.play_arrow,
+                    size: 50,
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }
