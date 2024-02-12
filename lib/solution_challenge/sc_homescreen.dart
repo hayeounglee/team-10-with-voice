@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/introducepage.dart';
 import 'package:flutter_gdsc_sc/solution_challenge/game_page.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -48,11 +49,13 @@ class HomeScreen extends StatelessWidget {
                               child: const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('XXX Game',
-                                      style: TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.w900,
-                                          fontFamily: 'Gugi'))
+                                  Animate(
+                                      effects: [FadeEffect(), ScaleEffect()],
+                                      child: Text('XXX Game',
+                                          style: TextStyle(
+                                              fontSize: 40,
+                                              fontWeight: FontWeight.w900,
+                                              fontFamily: 'Gugi')))
                                 ],
                               ),
                             ),

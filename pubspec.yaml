@@ -43,6 +43,7 @@ dependencies:
   wifi_iot: ^0.3.19
   fluttertoast: ^8.2.4
   speech_to_text: ^6.6.0
+  flutter_animate: ^4.5.0
 
 dev_dependencies:
   flutter_test:
