@@ -290,45 +290,45 @@ class _GamePageState extends State<GamePage> {
                       ),
                     ),
                     Container(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                            onPressed: _changeText,
-                            icon: const Icon(Icons.thumb_up)),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const TryAgainPage()));
-                              },
-                              child: const Icon(Icons.thumb_down)),
-                        ),
-                        FloatingActionButton(
-                          onPressed: _speechToText.isListening
-                              ? _stopListening
-                              : _startListening,
-                          tooltip: 'Listen',
-                          backgroundColor: Colors.red,
-                          child: Icon(
-                            _speechToText.isNotListening
-                                ? Icons.mic_off
-                                : Icons.mic,
-                            color: Colors.white,
-                          ),
-                        ),
-                        FloatingActionButton(
-                          onPressed: _restartGame, // 게임 재시작 버튼
-                          tooltip: 'Restart Game',
-                          backgroundColor: Colors.blue,
-                          child: const Icon(Icons.refresh),
-                        ),
-                      ],
-                    ),
+                    //Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    //children: [
+                    // IconButton(
+                    //     onPressed: _changeText,
+                    //     icon: const Icon(Icons.thumb_up)),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 8),
+                    //   child: GestureDetector(
+                    //       onTap: () {
+                    //         Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(
+                    //                 builder: (context) =>
+                    //                     const TryAgainPage()));
+                    //       },
+                    //       child: const Icon(Icons.thumb_down)),
+                    // ),
+                    // FloatingActionButton(
+                    //   onPressed: _speechToText.isListening
+                    //       ? _stopListening
+                    //       : _startListening,
+                    //   tooltip: 'Listen',
+                    //   backgroundColor: Colors.red,
+                    //   child: Icon(
+                    //     _speechToText.isNotListening
+                    //         ? Icons.mic_off
+                    //         : Icons.mic,
+                    //     color: Colors.white,
+                    //   ),
+                    // ),
+                    // FloatingActionButton(
+                    //   onPressed: _restartGame, // 게임 재시작 버튼
+                    //   tooltip: 'Restart Game',
+                    //   backgroundColor: Colors.blue,
+                    //   child: const Icon(Icons.refresh),
+                    // ),
+                    // ],
+                    //),
                     SizedBox(height: constraints.maxHeight * 0.001)
                   ],
                 )
